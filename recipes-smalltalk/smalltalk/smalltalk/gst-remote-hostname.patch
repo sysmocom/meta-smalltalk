@@ -1,0 +1,37 @@
+From 2fc74b9ec068a8a594bf507c5c48d61bcb63591f Mon Sep 17 00:00:00 2001
+From: Holger Hans Peter Freyther <zecke@selfish.org>
+Date: Mon, 30 May 2011 00:09:00 +0200
+Subject: [PATCH] scripts/Remote.st: Allow to specify the hostname for the bind
+
+Allow to bind the server to a specific address. The ServerSocket
+will not attempt to resolve the string to an address. Do this before.
+
+2011-05-30  Holger Hans Peter Freyther  <holger@freyther.de>
+
+	* scripts/Remote.st: Resolve the hostname to an address to be
+	used by Sockets.ServerSocket>>#port:bindTo:.
+---
+ ChangeLog         |    5 +++++
+ scripts/Remote.st |    4 ++--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/Remote.st b/scripts/Remote.st
+index 10f228d..ec65de4 100644
+--- a/scripts/Remote.st
++++ b/scripts/Remote.st
+@@ -182,10 +182,10 @@ available in the PATH of the remote machine.
+     opt isNil ifTrue: [
+ 	host isNil ifFalse: [ self error: 'multiple hosts are invalid' ].
+ 	(arg includes: $@)
+-	    ifFalse: [ host := arg ]
++	    ifFalse: [ host := TCP.SocketAddress byName: arg ]
+ 	    ifTrue: [
+ 		login isNil ifFalse: [ self error: 'multiple logins are invalid' ].
+-		login := arg copyUpTo: $@.
++		login := TCP.SocketAddress byName: (arg copyUpTo: $@).
+ 		host := arg copyAfter: $@ ] ].
+     ]
+ 
+-- 
+1.7.2.5
+

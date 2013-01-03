@@ -1,0 +1,91 @@
+>From f711b657b29bf94792da89612328b5d32a5ebf70 Mon Sep 17 00:00:00 2001
+From: Paolo Bonzini <address@hidden>
+Date: Thu, 22 Sep 2011 10:33:36 +0200
+Subject: [PATCH] improve Delay and millisecondClock behavior across image
+ save
+
+2011-09-22  Paolo Bonzini  <address@hidden>
+
+	* kernel/Delay.st: Restart pending delays when the image restarts.
+	* kernel/Time.st: Make the millisecondClockValue monotonic across
+	image save.
+
+libgst:
+2011-09-22  Paolo Bonzini  <address@hidden>
+
+	* libgst/dict.c: Add the ClockOnImageSave class variable to time.
+---
+ kernel/Delay.st  |    8 +++++++-
+ kernel/Time.st   |    9 +++++++--
+ libgst/dict.c    |    2 +-
+ 5 files changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/kernel/Delay.st b/kernel/Delay.st
+index fbb46ec..65f21e9 100644
+--- a/kernel/Delay.st
++++ b/kernel/Delay.st
+@@ -166,7 +166,13 @@ created.'>
+ 		    sortBlock: [:d1 :d2 | d1 resumptionTime >= d2 resumptionTime].
+ 	TimeoutSem := Semaphore new.
+ 	DelayProcess := [self runDelayProcess] forkAt: Processor timingPriority.
+-	TimeoutSem signal	"get going"
++        ObjectMemory addDependent: self.
++        self update: #returnFromSnapshot
++    ]
++
++    Delay class >> update: aspect [
++	"Prime the timer event loop when the image starts running."
++	aspect == #returnFromSnapshot ifTrue: [TimeoutSem signal]
+     ]
+ 
+     Delay class >> initialize [
+diff --git a/kernel/Time.st b/kernel/Time.st
+index 71926d9..d3810e7 100644
+--- a/kernel/Time.st
++++ b/kernel/Time.st
+@@ -42,6 +42,7 @@ time value, and a block execution timing facility.'>
+ 
+     SecondClockAdjustment := nil.
+     ClockOnStartup := nil.
++    ClockOnImageSave := nil.
+ 
+     Time class >> utcSecondClock [
+ 	"Answer the number of seconds since the midnight of 1/1/1901 (unlike
+@@ -143,6 +144,7 @@ time value, and a block execution timing facility.'>
+ 
+ 	<category: 'initialization'>
+ 	SecondClockAdjustment := 86400 * 36159.
++        ClockOnImageSave := 0.
+ 	ObjectMemory addDependent: self
+     ]
+ 
+@@ -150,8 +152,11 @@ time value, and a block execution timing facility.'>
+ 	"Private - Initialize the receiver's instance variables"
+ 
+ 	<category: 'initialization'>
+-	aspect == #returnFromSnapshot 
+-	    ifTrue: [ClockOnStartup := Time primMillisecondClock]
++        | time |
++	aspect == #returnFromSnapshot ifTrue: [
++            ClockOnStartup := Time primMillisecondClock - ClockOnImageSave].
++	aspect == #aboutToSnapshot ifTrue: [
++            ClockOnImageSave := Time millisecondClock].
+     ]
+ 
+     Time class >> now [
+diff --git a/libgst/dict.c b/libgst/dict.c
+index 806aabe..42b5b6e 100644
+--- a/libgst/dict.c
++++ b/libgst/dict.c
+@@ -337,7 +337,7 @@ static const class_definition class_info[] = {
+   {&_gst_time_class, &_gst_magnitude_class,
+    GST_ISP_FIXED, false, 1,
+    "Time", "seconds",
+-   "SecondClockAdjustment ClockOnStartup", NULL },
++   "SecondClockAdjustment ClockOnStartup ClockOnImageSave", NULL },
+ 
+   {&_gst_date_class, &_gst_magnitude_class,
+    GST_ISP_FIXED, false, 4,
+-- 
+1.7.6
+

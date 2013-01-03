@@ -1,0 +1,78 @@
+From c4915d9232edb576dfb9697501370877032288dc Mon Sep 17 00:00:00 2001
+From: Gwenael Casaccio <mrgwen@gmail.com>
+Date: Tue, 5 Jul 2011 10:34:48 +0200
+Subject: [PATCH 1/1] fix resumption of an image that had been created via gst-remote
+
+2011-08-13  Gwenael Casaccio  <mrgwen@gmail.com>
+
+	* scripts/Remote.st: Suspend/resume server process across snapshots.
+---
+ ChangeLog         |    4 ++++
+ scripts/Remote.st |   37 +++++++++++++++++++++++++++++++++++--
+ 2 files changed, 39 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/Remote.st b/scripts/Remote.st
+index cf383bd..39f2407 100644
+--- a/scripts/Remote.st
++++ b/scripts/Remote.st
+@@ -39,6 +39,38 @@ DLD addLibrary: 'libc'.
+         SystemDictionary compile: '
+             getpid [ ^''--pid not available'' ]' ].
+ 
++Object subclass: RemoteServer [
++
++    RemoteServer class >> new [
++
++	^ super new
++		initialize;
++		yourself
++    ]
++
++    | remoteProcess |
++
++    initialize [
++        <category: 'initialize'>
++
++        ObjectMemory addDependent: self
++    ]
++
++    update: aSymbol [
++        <category: 'initialize'>
++
++	aSymbol == #aboutToSnapshot ifTrue: [ ^ remoteProcess suspend ].
++        aSymbol == #finishedSnapshot ifTrue: [ ^ remoteProcess resume ].
++        aSymbol == #returnFromSnapshot ifTrue: [ ObjectMemory removeDependent: self ].
++    ]
++
++    process: aProcess [
++	<category: 'accessing'>
++
++	remoteProcess := aProcess
++    ]
++]
++
+ TextCollector subclass: MultiplexingTextCollector [
+     | default outputs |
+     initialize [
+@@ -69,7 +101,7 @@ TextCollector subclass: MultiplexingTextCollector [
+     ]
+ ]
+ 
+-| helpString commands server port host login |
++| helpString commands server port host login remoteServer |
+ commands := OrderedCollection new.
+ server := false.
+ port := 12345.
+@@ -207,7 +239,8 @@ available in the PATH of the remote machine.
+ server ifTrue: [
+     PackageLoader fileInPackage: 'Compiler'.
+     Transcript := MultiplexingTextCollector message: Transcript message.
+-    [
++    remoteServer := RemoteServer new.
++    remoteServer process: [
+ 	| queue |
+ 	queue := TCP.ServerSocket port: port bindTo: host.
+ 	[
+-- 
+1.7.2.5
+
