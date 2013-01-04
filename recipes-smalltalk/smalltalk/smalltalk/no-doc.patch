@@ -1,0 +1,16 @@
+The build system tries to execute the gst-tool gst-doc and gst-tool is
+not installed and the easiest right now is to not build the docs
+
+Index: smalltalk-3.2.4/Makefile.am
+===================================================================
+--- smalltalk-3.2.4.orig/Makefile.am	2013-01-04 18:56:47.000000000 +0800
++++ smalltalk-3.2.4/Makefile.am	2013-01-04 18:59:51.715391338 +0800
+@@ -30,7 +30,7 @@
+ if ENABLE_DISASSEMBLER
+ SUBDIRS += opcode
+ endif
+-SUBDIRS += libgst . $(BUILT_PACKAGES) doc tests
++SUBDIRS += libgst . $(BUILT_PACKAGES) tests
+ 
+ # Running gst inside the build directory...
+ 
