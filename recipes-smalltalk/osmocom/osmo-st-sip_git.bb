@@ -9,5 +9,5 @@ require smalltalk-package.inc
 S = "${WORKDIR}/git"
 SRC_URI = "git://git.osmocom.org/smalltalk/osmo-st-sip;protocol=git;branch=master"
 SRCREV = "c9bed5b2353518d4d73272006511f4bfecab01ae"
-PV = "0.0.1+gitr${SRCREV}"
+PV = "0.0.1+gitr${SRCPV}"
 PR = "${INC_PR}.0"
