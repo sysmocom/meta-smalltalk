@@ -1,4 +1,4 @@
-DESCRITOPN = "A simple test phone to do a LU and place a call"
+DESCRIPTION = "A simple test phone to do a LU and place a call"
 HOMEPAGE = "http://osmocom.org"
 LICENSE = "AGPLv3+"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \

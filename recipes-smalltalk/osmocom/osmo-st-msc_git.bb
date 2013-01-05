@@ -1,4 +1,4 @@
-DESCRITOPN = "This is a simple MSC done in Smalltalk"
+DESCRIPTION = "This is a simple MSC done in Smalltalk"
 HOMEPAGE = "http://osmocom.org"
 LICENSE = "AGPLv3+"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \
