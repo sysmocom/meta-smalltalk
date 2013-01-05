@@ -1,4 +1,4 @@
-DESCRITOPN = "This is a simple MSC done in Smalltalk"
+DESCRITOPN = "This is a MGCP CallAgent written in Smalltalk"
 HOMEPAGE = "http://osmocom.org"
 LICENSE = "AGPLv3+"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \
@@ -6,11 +6,10 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 
 require smalltalk-package.inc
 
-RDEPENDS += "osmo-st-logging osmo-st-network osmo-st-gsm"
+RDEPENDS += "osmo-st-logging osmo-st-core"
 
 S = "${WORKDIR}/git"
-SRC_URI = "git://git.osmocom.org/smalltalk/osmo-st-msc;protocol=git;branch=master"
-SRCREV = "37c768d3cb650fec0b004d163ec2ac3763dc583e"
+SRC_URI = "git://git.osmocom.org/smalltalk/osmo-st-mgcp;protocol=git;branch=master"
+SRCREV = "ca0d7624a8320a452e7071c99063d319aa34aed1"
 PV = "0.0.1+gitr${SRCREV}"
 PR = "${INC_PR}.0"
-
