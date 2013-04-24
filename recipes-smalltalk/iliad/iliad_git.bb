@@ -9,9 +9,11 @@ S = "${WORKDIR}/git"
 SRC_URI = "git://github.com/zecke/iliad-stable.git;protocol=git;branch=master"
 SRCREV = "3469a322b9cae17d452fae1b38d661e14e4ae902"
 PV = "0.9.1+gitr${SRCPV}"
-PR = "r1"
+PR = "r3"
 
 inherit smalltalk_package
+
+RDEPENDS_${PN} += "smalltalk-iconv grease"
 
 do_compile() {
 	gst < /dev/null
