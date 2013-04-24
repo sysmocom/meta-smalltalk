@@ -6,7 +6,7 @@ HOMEPAGE = "http://osmocom.org"
 
 require smalltalk-package.inc
 
-RDEPENDS += "osmo-st-logging"
+RDEPENDS_${PN} += "osmo-st-logging"
 
 S = "${WORKDIR}/git"
 SRC_URI = "git://git.osmocom.org/smalltalk/osmo-st-network;protocol=git;branch=master"

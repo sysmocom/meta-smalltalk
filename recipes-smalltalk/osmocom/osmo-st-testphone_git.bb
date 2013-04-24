@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 
 require smalltalk-package.inc
 
-RDEPENDS += "osmo-st-network osmo-st-logging osmo-st-gsm"
+RDEPENDS_${PN} += "osmo-st-network osmo-st-logging osmo-st-gsm"
 
 S = "${WORKDIR}/git"
 SRC_URI = "git://git.osmocom.org/smalltalk/osmo-st-testphone;protocol=git;branch=master"
