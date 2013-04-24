@@ -7,7 +7,7 @@ INC_PR = "2"
 DEPENDS = "smalltalk-native gnutls readline"
 DEPENDS_virtclass-native = "gnutls-native"
 
-EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl"
+EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl --with-tcl=/bin/false --with-tk=/bin/false"
 PACKAGES =+ "${PN}-digest ${PN}-expat ${PN}-gdbm ${PN}-sdl ${PN}-sqlite \
 	${PN}-seaside ${PN}-magritte ${PN}-magritte-seaside ${PN}-examples "
 
