@@ -2,12 +2,12 @@ DESCRIPTION = "GNU Smalltalk."
 HOMEPAGE = "http://smalltalk.gnu.org/"
 LICENSE = "GPLv2+"
 
-INC_PR = "7"
+INC_PR = "8"
 
 DEPENDS = "smalltalk-native gnutls readline"
 DEPENDS_virtclass-native = "gnutls-native"
 
-EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl --with-tcl=/bin/false --with-tk=/bin/false --without-emacs gst_cv_libc_dlopen_works=hacked"
+EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl --with-tcl=/bin/false --with-tk=/bin/false --without-emacs gst_cv_libc_dlopen_works=hacked gst_cv_readline_libs='-lreadline'"
 PACKAGES =+ "${PN}-digest ${PN}-expat ${PN}-iconv ${PN}-i18n ${PN}-gdbm ${PN}-sdl \
 	${PN}-sqlite ${PN}-seaside ${PN}-magritte ${PN}-magritte-seaside ${PN}-examples \
 	${PN}-zlib"
