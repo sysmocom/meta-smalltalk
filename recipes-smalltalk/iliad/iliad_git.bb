@@ -7,11 +7,12 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 
 S = "${WORKDIR}/git"
 SRC_URI = "git://github.com/zecke/iliad.git;protocol=git;branch=master"
-SRCREV = "9d660f6dedc4dc6418a7dff8a24f93bd351fa224"
-PV = "0.9.1+gitr${SRCPV}"
-PR = "r4"
+SRCREV = "9cfd753a5ce7f811d87f28796d32f3fcaa1c878c"
+PV = "0.9.1.1+gitr${SRCPV}"
 
 inherit smalltalk_package
+
+PR = "r5"
 
 RDEPENDS_${PN} += "smalltalk-iconv grease"
 
