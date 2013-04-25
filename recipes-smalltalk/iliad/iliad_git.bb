@@ -6,10 +6,10 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
                     file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 S = "${WORKDIR}/git"
-SRC_URI = "git://github.com/zecke/iliad-stable.git;protocol=git;branch=master"
-SRCREV = "3469a322b9cae17d452fae1b38d661e14e4ae902"
+SRC_URI = "git://github.com/zecke/iliad.git;protocol=git;branch=master"
+SRCREV = "9d660f6dedc4dc6418a7dff8a24f93bd351fa224"
 PV = "0.9.1+gitr${SRCPV}"
-PR = "r3"
+PR = "r4"
 
 inherit smalltalk_package
 
