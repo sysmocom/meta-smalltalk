@@ -1,0 +1,16 @@
+The build system tries to execute the gst-tool gst-doc and gst-tool is
+not installed and the easiest right now is to not build the docs
+
+Index: smalltalk-3.2.91/Makefile.am
+===================================================================
+--- smalltalk-3.2.91.orig/Makefile.am	2013-04-28 16:07:14.018325529 +0200
++++ smalltalk-3.2.91/Makefile.am	2013-04-28 16:08:10.426335670 +0200
+@@ -23,7 +23,7 @@
+ gstdatadir=$(pkgdatadir)
+ 
+ DIST_SUBDIRS = lib-src snprintfv lightning libgst \
+-	. $(ALL_PACKAGES) tests doc
++	. $(ALL_PACKAGES) tests
+ 
+ SUBDIRS = lib-src lightning $(subdirs)
+ SUBDIRS += libgst . $(BUILT_PACKAGES) doc tests
