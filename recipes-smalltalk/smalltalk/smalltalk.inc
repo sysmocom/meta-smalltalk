@@ -2,9 +2,9 @@ DESCRIPTION = "GNU Smalltalk."
 HOMEPAGE = "http://smalltalk.gnu.org/"
 LICENSE = "GPLv2+"
 
-INC_PR = "9"
+INC_PR = "10"
 
-DEPENDS = "smalltalk-native gnutls readline libsigsegv"
+DEPENDS = "smalltalk-native gnutls readline libsigsegv libtool"
 DEPENDS_virtclass-native = "gnutls-native"
 
 EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl --with-tcl=/bin/false --with-tk=/bin/false --without-emacs gst_cv_libc_dlopen_works=hacked gst_cv_readline_libs='-lreadline'"
