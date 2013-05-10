@@ -2,10 +2,10 @@ DESCRIPTION = "GNU Smalltalk."
 HOMEPAGE = "http://smalltalk.gnu.org/"
 LICENSE = "GPLv2+"
 
-INC_PR = "10"
+INC_PR = "11"
 
-DEPENDS = "smalltalk-native gnutls readline libsigsegv libtool"
-DEPENDS_virtclass-native = "gnutls-native"
+DEPENDS = "smalltalk-native gnutls readline libsigsegv libtool libffi"
+DEPENDS_virtclass-native = "gnutls-native libffi-native"
 
 EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl --with-tcl=/bin/false --with-tk=/bin/false --without-emacs gst_cv_libc_dlopen_works=hacked gst_cv_readline_libs='-lreadline'"
 PACKAGES =+ "${PN}-digest ${PN}-expat ${PN}-iconv ${PN}-i18n ${PN}-gdbm ${PN}-sdl \
