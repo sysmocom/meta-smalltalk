@@ -1,5 +1,5 @@
 DEPENDS = "smalltalk-native"
-RDEPENDS_${PN} = "smalltalk"
+RDEPENDS_${PN} += "smalltalk"
 
 smalltalk_package_do_compile() {
 	gst < /dev/null
