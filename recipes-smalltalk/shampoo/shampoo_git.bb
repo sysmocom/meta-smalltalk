@@ -8,8 +8,8 @@ S = "${WORKDIR}/git"
 SRC_URI = "git://github.com/dmatveev/shampoo.git;protocol=git;branch=master"
 SRCREV = "8815d3c61dfc04d539c8bcc676d35fb1d568698c"
 PV = "0.0.1+gitr${SRCPV}"
-PR = "r1"
+PR = "r2"
 
-RDEPENDS = "smalltalk-digest"
+RDEPENDS_${PN} = "smalltalk-digest"
 
 inherit smalltalk_package

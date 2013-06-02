@@ -7,11 +7,11 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 
 require smalltalk-package.inc
 
-RDEPENDS += "petitparser"
+RDEPENDS_${PN} += "petitparser"
 
 S = "${WORKDIR}/git"
 SRC_URI = "git://gitorious.org/gnu-smalltalk-ports/petitparser-tests.git;protocol=git;branch=master"
 SRCREV = "4b112d1f1af9692807bd28ae192b1fdc69f8c564"
 PV = "0.0.1+gitr${SRCPV}"
-PR = "${INC_PR}.0"
+PR = "${INC_PR}.1"
 
