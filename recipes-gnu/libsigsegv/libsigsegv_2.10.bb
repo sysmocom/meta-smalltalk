@@ -11,3 +11,6 @@ SRC_URI[sha256sum] = "8460a4a3dd4954c3d96d7a4f5dd5bc4d9b76f5754196aa245287553b26
 PR = "r1"
 
 inherit autotools
+
+
+BBCLASSEXTEND = "native"
