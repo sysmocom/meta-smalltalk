@@ -8,6 +8,6 @@ require smalltalk-package.inc
 
 S = "${WORKDIR}/git"
 SRC_URI = "git://git.osmocom.org/smalltalk/osmo-st-logging;protocol=git;branch=master"
-SRCREV = "39eeb846821a2b1e6b0eb1c932eb4c1326db8a28"
+SRCREV = "f900c8fc6ef9b7ff54f0d57d092ac6b9d175460b"
 PV = "0.0.2+gitr${SRCPV}"
 PR = "${INC_PR}.0"
