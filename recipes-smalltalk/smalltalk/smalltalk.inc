@@ -2,15 +2,15 @@ DESCRIPTION = "GNU Smalltalk."
 HOMEPAGE = "http://smalltalk.gnu.org/"
 LICENSE = "GPLv2+"
 
-INC_PR = "11"
+INC_PR = "12"
 
-DEPENDS = "smalltalk-native gnutls readline libsigsegv libtool libffi zip-native"
+DEPENDS = "smalltalk-native gnutls readline libsigsegv libtool libffi zip-native expat "
 DEPENDS_virtclass-native = "gnutls-native libffi-native libsigsegv-native"
 
 EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl --with-tcl=/bin/false --with-tk=/bin/false --without-emacs gst_cv_libc_dlopen_works=hacked gst_cv_readline_libs='-lreadline'"
 PACKAGES =+ "${PN}-digest ${PN}-expat ${PN}-iconv ${PN}-i18n ${PN}-gdbm ${PN}-sdl \
 	${PN}-sqlite ${PN}-seaside ${PN}-magritte ${PN}-magritte-seaside ${PN}-examples \
-	${PN}-zlib"
+	${PN}-xml ${PN}-zlib"
 
 # skip dev-so for plugins
 INSANE_SKIP_${PN}-digest = "dev-so"
@@ -20,6 +20,7 @@ INSANE_SKIP_${PN}-i18n = "dev-so"
 INSANE_SKIP_${PN}-gdbm = "dev-so"
 INSANE_SKIP_${PN}-sdl = "dev-so"
 INSANE_SKIP_${PN}-sqlite = "dev-so"
+INSANE_SKIP_${PN}-xml = "dev-so"
 INSANE_SKIP_${PN}-zlib = "dev-so"
 
 # gst-tool and such
@@ -44,6 +45,7 @@ FILES_${PN}-static += "${libdir}/smalltalk/lib*.a"
 FILES_${PN}-seaside = "${datadir}/smalltalk/Seaside*.star"
 FILES_${PN}-magritte = "${datadir}/smalltalk/Magritte.star"
 FILES_${PN}-magritte-seaside = "${datadir}/smalltalk/Magritte-Seaside.star"
+FILES_${PN}-xml = "${datadir}/smalltalk/XML*.star ${datadir}/smalltalk/XPath.star ${datadir}/smalltalk/XSL.star ${libdir}/smalltalk/expat-*.so"
 FILES_${PN}-zlib = "${libdir}/smalltalk/zlib*.so \
 	${datadir}/smalltalk/ZLib.star"
 
