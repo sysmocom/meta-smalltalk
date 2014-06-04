@@ -10,6 +10,6 @@ RDEPENDS_${PN} += "osmo-st-logging osmo-st-network osmo-st-gsm osmo-st-core"
 
 S = "${WORKDIR}/git"
 SRC_URI = "git://git.osmocom.org/smalltalk/osmo-st-msc;protocol=git;branch=master"
-SRCREV = "b880a9907011c4f1e37b7c3cc8e4549a6520f5a1"
+SRCREV = "befb7a50f7c032e5ca4d8a992d6176983b5177f7"
 PV = "0.0.1+gitr${SRCPV}"
 PR = "${INC_PR}.0"
