@@ -1,9 +1,10 @@
 DEPENDS = "smalltalk-native"
 RDEPENDS_${PN} += "smalltalk"
+GST_PACKAGE_XML ?= "package.xml"
 
 smalltalk_package_do_compile() {
 	gst < /dev/null
-	gst-package --target-directory=. package.xml
+	gst-package --target-directory=. ${GST_PACKAGE_XML}
 }
 
 smalltalk_package_do_install () {
