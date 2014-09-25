@@ -63,7 +63,7 @@ do_configure() {
 
 do_configure_virtclass-native() {
 	autotools_do_configure
-	sed -i -e 's/^module_DATA.*$//' ${S}/Makefile
+	sed -i -e 's/^module_DATA.*$//' ${B}/Makefile
 }
 
 do_install_append() {
