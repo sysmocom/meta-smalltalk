@@ -21,3 +21,5 @@ CACHED_CONFIGUREVARS += " \
 	ac_cv_test_arm_arm=no \
 	ac_cv_test_arm_swf=no \
 	"
+
+BBCLASSEXTEND = "native"
