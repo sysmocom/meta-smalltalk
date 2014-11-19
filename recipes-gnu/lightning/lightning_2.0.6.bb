@@ -12,6 +12,7 @@ S = "${WORKDIR}/git"
 
 PR = "r3"
 
+EXTRA_OECONF = "--disable-disassembler"
 
 inherit autotools
 
