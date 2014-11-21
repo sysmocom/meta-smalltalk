@@ -7,7 +7,7 @@ LICENSE = "LGPLv3+"
 LIC_FILES_CHKSUM = "file://COPYING.LESSER;md5=6a6a8e020838b23406c81b19c1d46df6"
 
 SRC_URI = "git://git.sv.gnu.org/lightning.git;protocol=git"
-SRCREV= "85ab988cd14233f431a9065633c0de81bca65250"
+SRCREV= "2d3529ddb583f31b16ce747b7d7f68dd5849502e"
 S = "${WORKDIR}/git"
 
 PR = "r3"
