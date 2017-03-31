@@ -5,7 +5,7 @@ LICENSE = "GPLv2+"
 INC_PR = "12"
 
 DEPENDS = "smalltalk-native gnutls readline libsigsegv libtool libffi zip-native expat sqlite3 zip-native"
-DEPENDS_virtclass-native = "gnutls-native libffi-native libsigsegv-native zip-native"
+DEPENDS_virtclass-native = "gnutls-native libffi-native libsigsegv-native zip-native readline-native"
 
 EXTRA_OECONF = "--disable-static --disable-gtk --without-x --without-opengl --with-tcl=/bin/false --with-tk=/bin/false --without-emacs gst_cv_libc_dlopen_works=hacked gst_cv_readline_libs='-lreadline'"
 PACKAGES =+ "${PN}-digest ${PN}-expat ${PN}-iconv ${PN}-i18n ${PN}-gdbm ${PN}-sdl \
